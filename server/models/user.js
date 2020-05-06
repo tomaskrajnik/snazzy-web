@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const mongoose = require("mongoose");
 const Joi = require("Joi");
+Joi.objectId = require("joi-objectid")(Joi);
+const { planSchema } = require("./plan");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -24,10 +26,13 @@ const userSchema = new mongoose.Schema({
     maxlength: 1024,
   },
   selectedPlan: {
-    type: String,
+    type: planSchema,
     required: true,
   },
-  isAdmin: Boolean,
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -51,7 +56,8 @@ function validateUser(user) {
     name: Joi.string().min(2).max(255).required(),
     email: Joi.string().min(3).max(50).required().email(),
     password: Joi.string().min(8).max(255).required(),
-    selectedPlan: Joi.string().required(),
+    isAdmin: Joi.boolean(),
+    selectedPlanId: Joi.objectId().required(),
   });
   return Joi.validate(user, schema);
 }
