@@ -5,6 +5,6 @@ const logger = require("./../startup/logger");
 module.exports = function () {
   const db = config.get("db");
   mongoose
-    .connect(db, { useNewUrlParser: true })
+    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => logger.log.info(`Connected to database - ${db}...`));
 };

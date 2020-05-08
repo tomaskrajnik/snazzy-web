@@ -22,7 +22,6 @@ router.post("/", async (req, res) => {
     price: plan.price,
     description: plan.description,
   };
-  console.log(selectedPlan);
 
   user = new User(_.pick(req.body, ["name", "email", "password", "isAdmin"]));
   user.selectedPlan = selectedPlan;
@@ -31,7 +30,6 @@ router.post("/", async (req, res) => {
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
   const token = user.generateAuthToken();
-  console.log(user);
   res.header("x-auth-token", token).send(user);
 });
 
