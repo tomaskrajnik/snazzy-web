@@ -1,8 +1,9 @@
 import React from "react";
-import "./App.css";
+import TestRegister from "./components/register";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  return <div className="App"></div>;
+  return <TestRegister />;
 }
 
 export default App;
