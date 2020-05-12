@@ -1,9 +1,15 @@
-import React from "react";
-import TestRegister from "./components/register";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Routes from "./routes/routes";
 
-function App() {
-  return <TestRegister />;
-}
+const App = () => {
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    setToken(null);
+  });
+
+  return <Routes token={token} />;
+};
 
 export default App;

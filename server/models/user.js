@@ -57,7 +57,7 @@ function validateUser(user) {
     email: Joi.string().min(3).max(50).required().email(),
     password: Joi.string().min(8).max(255).required(),
     isAdmin: Joi.boolean(),
-    selectedPlanId: Joi.objectId().required(),
+    selectedPlan: Joi.objectId().required(),
   });
   return Joi.validate(user, schema);
 }

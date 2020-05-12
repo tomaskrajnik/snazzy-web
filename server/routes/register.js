@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("User already registered..");
 
-  const plan = await Plan.findById(req.body.selectedPlanId);
+  const plan = await Plan.findById(req.body.selectedPlan);
   if (!plan) return res.status(400).send("Invalid plan");
 
   const selectedPlan = {
