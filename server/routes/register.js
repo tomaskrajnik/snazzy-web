@@ -13,9 +13,8 @@ router.post("/", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("User already registered..");
 
-  const plan = await Plan.findById(req.body.selectedPlan);
+  const plan = await Plan.findOne({ title: req.body.selectedPlan });
   if (!plan) return res.status(400).send("Invalid plan");
-
   const selectedPlan = {
     _id: plan._id,
     title: plan.title,
@@ -30,7 +29,7 @@ router.post("/", async (req, res) => {
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
   const token = user.generateAuthToken();
-  res.header("x-auth-token", token).send(user);
+  res.header("x-auth-token", token).send(user._id);
 });
 
 module.exports = router;
