@@ -1,0 +1,17 @@
+.sidebar {
+  width: 350px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #543172;
+  &__wrapper-logo {
+    width: 70px;
+    height: 70px;
+    background-color: #6c4e86;
+    border-radius: 10px;
+  }
+  &__logo svg {
+    fill: white;
+  }
+}

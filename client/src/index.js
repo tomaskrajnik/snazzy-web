@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/styles/root.scss";
 
 ReactDOM.render(
   <React.StrictMode>
