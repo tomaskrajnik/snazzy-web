@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;700&display=swap');
+@import "colors";
 
 :root {
     --font-family-headers: 'Inter',
@@ -27,6 +28,7 @@
 body {
     font-family: var(--font-family-primary);
     font-weight: 400;
+    color: var(--font-color-primary);
 }
 
 h1,
@@ -59,4 +61,8 @@ h3 {
 p {
     font-size: (var(--font-size-primary));
     line-height: var(--line-height-primary);
+}
+
+input[type="password"] {
+    letter-spacing: 3px;
 }

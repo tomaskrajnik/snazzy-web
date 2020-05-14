@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import Input from "./../../../components/common/Input";
+import SubmitButton from "../../../components/common/SubmitButton";
 
 import AuthService from "./../../../services/authService";
+import backgroundUpperAsset from "./../../../assets/images/auth-background-asset1.svg";
+import backgroundLowerAsset from "./../../../assets/images/auth-background-asset2.svg";
 
 const LogIn = ({ token, saveToken }) => {
   const [user, setUser] = useState({
@@ -31,36 +35,49 @@ const LogIn = ({ token, saveToken }) => {
   if (token) return <Redirect to="/" />;
 
   return (
-    <Row className="d-flex flex-column mt-5">
-      <Col className="mr-auto ml-auto" style={{ maxWidth: "500px" }}>
-        <h1>Log in</h1>
-      </Col>
-      <Col className="mr-auto ml-auto" style={{ maxWidth: "500px" }}>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicName">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              name="email"
-              type="email"
-              placeholder="Your email"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              name="password"
-              type="password"
-              placeholder="Enter password"
-              onChange={handleChange}
-            />
-          </Form.Group>
-
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+    <Row className="d-flex flex-column text-center ">
+      <Col className="mr-auto ml-auto mt-5 text-left position-relative form-wrapper">
+        <img
+          className="position-absolute"
+          style={{ left: "-20px", zIndex: "-1" }}
+          src={backgroundUpperAsset}
+          alt="snazzy"
+        />
+        <img
+          className="position-absolute"
+          style={{ bottom: "20px", right: "-20px", zIndex: "-1" }}
+          src={backgroundLowerAsset}
+          alt="snazzy"
+        />
+        <h2 className="mb-5">Sign in to your account</h2>
+        <Form className="mt-5" onSubmit={handleSubmit}>
+          <Input
+            name="email"
+            type="email"
+            onChange={handleChange}
+            label="Email"
+          />
+          <Input
+            name="password"
+            type="password"
+            onChange={handleChange}
+            label="Password"
+            additionalButton="Forgot password?"
+          />
+          <SubmitButton title="Sign in" />
         </Form>
       </Col>
+      <div className=" mt-5">
+        <p>
+          Dont have an account?
+          <span>
+            {" "}
+            <Link to="/register" className="linkToOtherAuth">
+              Sign up
+            </Link>
+          </span>
+        </p>
+      </div>
     </Row>
   );
 };
