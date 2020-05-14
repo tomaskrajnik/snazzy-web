@@ -2,14 +2,17 @@ import React, {useState, useEffect} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Routes from "./routes/routes";
 
+import "./assets/styles/index.scss";
+
 const App = () => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState();
 
   useState(() => {
-    setToken("daco");
+    const token = localStorage.getItem("snazzyAuthToken");
+    if (token) setToken(token);
   });
 
-  return <Routes token={token} />;
+  return <Routes token={token} saveToken={setToken} />;
 };
 
 export default App;

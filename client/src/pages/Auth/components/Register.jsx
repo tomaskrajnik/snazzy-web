@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 
 import AuthService from "./../../../services/authService";
 import Plans from "./../../../services/plansService";
 
-const Register = () => {
+const Register = ({ token, saveToken }) => {
   const [user, setUser] = useState({
     name: "",
     password: "",
     email: "",
     selectedPlan: "",
   });
+
   const [isLoading, setIsLoading] = useState(true);
   const [plans, setPlans] = useState(() => {
     async function getPlans() {
@@ -24,23 +26,24 @@ const Register = () => {
   const handleChange = ({ currentTarget: input }) => {
     const credentials = { ...user };
     const { name, value } = input;
-    console.log(value);
-    name === "selectedPlan"
-      ? (credentials[name] = value.id)
-      : (credentials[name] = value);
+    credentials[name] = value;
     setUser(credentials);
-    console.log(credentials);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await AuthService.register(user);
-      console.log(response);
+      const token = response.headers["x-auth-token"];
+      localStorage.setItem("snazzyAuthToken", token);
+      saveToken(token);
     } catch (err) {
       console.log(err.message);
     }
   };
+
+  if (token) return <Redirect to="/" />;
+
   return (
     <Row className="d-flex flex-column mt-5">
       <Col className="mr-auto ml-auto" style={{ maxWidth: "500px" }}>

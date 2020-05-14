@@ -39,10 +39,7 @@ userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
     {
       _id: this._id,
-      isAdmin: this.isAdmin,
-      selectedPlan: this.selectedPlan,
-      name: this.name,
-      email: this.email,
+      exp: new Date().setDate(new Date().getDate() + 1),
     },
     config.get("TOKEN_PRIVATE_KEY")
   );
@@ -57,7 +54,7 @@ function validateUser(user) {
     email: Joi.string().min(3).max(50).required().email(),
     password: Joi.string().min(8).max(255).required(),
     isAdmin: Joi.boolean(),
-    selectedPlan: Joi.objectId().required(),
+    selectedPlan: Joi.string().required(),
   });
   return Joi.validate(user, schema);
 }

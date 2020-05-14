@@ -4,17 +4,17 @@ import Auth from "./../pages/Auth/Auth";
 import HomePage from "./../pages/HomePage/HomePage";
 import NotFound from "./../pages/NotFound/NotFound";
 
-const Routes = ({ token }) => {
+const Routes = ({ token, saveToken }) => {
   return (
     <Switch>
       <Route path="/auth/log-in">
-        <Auth />
+        <Auth token={token} saveToken={saveToken} />
       </Route>
       <Route path="/auth/register">
-        <Auth />
+        <Auth token={token} saveToken={saveToken} />
       </Route>
       <Route path="/dashboard">
-        <HomePage token={token} />
+        <HomePage token={token} removeToken={saveToken} />
       </Route>
       <Route path="/not-found">
         <NotFound />
