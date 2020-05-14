@@ -13,6 +13,7 @@ const Input = ({
   const inputStyle = {
     border: "1px solid #CFD6E4",
     height: "44px",
+    boxShadow: "inset 0px 1px 12px rgba(0, 0, 0, 0.03)",
   };
   const labelStyle = {
     fontSize: "14px",

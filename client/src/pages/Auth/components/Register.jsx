@@ -1,9 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import Input from "./../../../components/common/Input";
+import SubmitButton from "../../../components/common/SubmitButton";
 
 import AuthService from "./../../../services/authService";
 import Plans from "./../../../services/plansService";
+
+import backgroundUpperAsset from "./../../../assets/images/auth-background-asset1.svg";
+import backgroundLowerAsset from "./../../../assets/images/auth-background-asset2.svg";
+
+import mailchimpLogo from "./../../../assets/images/integrations/mailchimp.svg";
+import wordpressLogo from "./../../../assets/images/integrations/wordpress.svg";
+import shopifyLogo from "./../../../assets/images/integrations/shopify.svg";
+import googleLogo from "./../../../assets/images/integrations/google.svg";
+
+const integrationLogos = [
+  { id: 1, src: mailchimpLogo },
+  { id: 2, src: wordpressLogo },
+  { id: 3, src: shopifyLogo },
+  { id: 4, src: googleLogo },
+];
+
+const whatWeOfferArray = [
+  "Campaign builder",
+  "Design your own pop ups",
+  "Watch the behaviour",
+];
 
 const Register = ({ token, saveToken }) => {
   const [user, setUser] = useState({
@@ -11,16 +34,6 @@ const Register = ({ token, saveToken }) => {
     password: "",
     email: "",
     selectedPlan: "",
-  });
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [plans, setPlans] = useState(() => {
-    async function getPlans() {
-      const plans = (await Plans()).data;
-      setPlans(plans);
-      setIsLoading(false);
-    }
-    getPlans();
   });
 
   const handleChange = ({ currentTarget: input }) => {
@@ -32,8 +45,9 @@ const Register = ({ token, saveToken }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const credentials = { ...user, selectedPlan: "Trial" };
     try {
-      const response = await AuthService.register(user);
+      const response = await AuthService.register(credentials);
       const token = response.headers["x-auth-token"];
       localStorage.setItem("snazzyAuthToken", token);
       saveToken(token);
@@ -45,63 +59,77 @@ const Register = ({ token, saveToken }) => {
   if (token) return <Redirect to="/" />;
 
   return (
-    <Row className="d-flex flex-column mt-5">
-      <Col className="mr-auto ml-auto" style={{ maxWidth: "500px" }}>
-        <h1>Register</h1>
-      </Col>
-      <Col className="mr-auto ml-auto" style={{ maxWidth: "500px" }}>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicName">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              name="name"
-              type="text"
-              placeholder="Your name"
-              onChange={handleChange}
+    <div className="d-flex flex-column text-center ">
+      <Row className="ml-auto mr-auto mt-5">
+        <Col>
+          <div className=" mr-0 text-left position-relative form-wrapper">
+            <img
+              className="position-absolute"
+              style={{ left: "-20px", zIndex: "-1" }}
+              src={backgroundUpperAsset}
+              alt="snazzy"
             />
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              name="email"
-              type="email"
-              placeholder="Enter email"
-              onChange={handleChange}
+            <img
+              className="position-absolute"
+              style={{ bottom: "20px", right: "-20px", zIndex: "-1" }}
+              src={backgroundLowerAsset}
+              alt="snazzy"
             />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              name="password"
-              type="password"
-              placeholder="Password"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          {!isLoading && (
-            <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>Select plan</Form.Label>
-              <Form.Control
-                as="select"
-                name="selectedPlan"
+            <h2 className="mb-5">Create an account</h2>
+            <Form className="mt-5" onSubmit={handleSubmit}>
+              <Input
+                name="name"
+                type="text"
                 onChange={handleChange}
-              >
-                {plans.map((plan) => (
-                  <option key={plan._id} id={plan._id}>
-                    {plan.title}
-                  </option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-          )}
+                label="Name"
+              />
+              <Input
+                name="email"
+                type="email"
+                onChange={handleChange}
+                label="Email"
+              />
+              <Input
+                name="password"
+                type="password"
+                onChange={handleChange}
+                label="Password"
+              />
 
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      </Col>
-    </Row>
+              <SubmitButton title="Sign in" />
+            </Form>
+          </div>
+          <div className=" mt-4 mb-5">
+            <p>
+              Already have an account?
+              <span>
+                {" "}
+                <Link to="/log-in" className="linkToOtherAuth">
+                  Sign in
+                </Link>
+              </span>
+            </p>
+          </div>
+        </Col>
+
+        <Col className="text-wrapper text-left">
+          <h1 className="mb-5">7 day trial for free!</h1>
+          {whatWeOfferArray.map((item) => (
+            <li className="whatWeOffer" key={item}>
+              {item}
+            </li>
+          ))}
+          <h3 className="mt-5">25+ Integrations</h3>
+          <p className="mt-2">
+            Integrating with your email service provider is easy with our native
+            integrations, Zapier or through our API.
+          </p>
+          {integrationLogos.map(({ id, src }) => (
+            <img className="mr-4 mt-4" key={id} src={src}></img>
+          ))}
+        </Col>
+      </Row>
+    </div>
   );
 };
 

@@ -5,6 +5,7 @@ import Input from "./../../../components/common/Input";
 import SubmitButton from "../../../components/common/SubmitButton";
 
 import AuthService from "./../../../services/authService";
+
 import backgroundUpperAsset from "./../../../assets/images/auth-background-asset1.svg";
 import backgroundLowerAsset from "./../../../assets/images/auth-background-asset2.svg";
 
@@ -67,7 +68,7 @@ const LogIn = ({ token, saveToken }) => {
           <SubmitButton title="Sign in" />
         </Form>
       </Col>
-      <div className=" mt-5">
+      <div className=" mt-4 mb-5">
         <p>
           Dont have an account?
           <span>
