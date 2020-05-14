@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Form, Button } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {Row, Col, Form, Button} from "react-bootstrap";
+import {Redirect} from "react-router-dom";
 
 import AuthService from "./../../../services/authService";
 import Plans from "./../../../services/plansService";
 
-const Register = ({ token, saveToken }) => {
+const Register = ({token, saveToken}) => {
   const [user, setUser] = useState({
     name: "",
     password: "",
@@ -23,9 +23,9 @@ const Register = ({ token, saveToken }) => {
     getPlans();
   });
 
-  const handleChange = ({ currentTarget: input }) => {
-    const credentials = { ...user };
-    const { name, value } = input;
+  const handleChange = ({currentTarget: input}) => {
+    const credentials = {...user};
+    const {name, value} = input;
     credentials[name] = value;
     setUser(credentials);
   };
@@ -41,15 +41,15 @@ const Register = ({ token, saveToken }) => {
       console.log(err.message);
     }
   };
-
+  console.log(isLoading);
   if (token) return <Redirect to="/" />;
 
   return (
     <Row className="d-flex flex-column mt-5">
-      <Col className="mr-auto ml-auto" style={{ maxWidth: "500px" }}>
+      <Col className="mr-auto ml-auto" style={{maxWidth: "500px"}}>
         <h1>Register</h1>
       </Col>
-      <Col className="mr-auto ml-auto" style={{ maxWidth: "500px" }}>
+      <Col className="mr-auto ml-auto" style={{maxWidth: "500px"}}>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicName">
             <Form.Label>Name</Form.Label>

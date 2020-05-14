@@ -1,19 +1,64 @@
+@import "../../assets/styles/index.scss";
 .sidebar {
   width: 250px;
-  height: 100vh;
+  height: 100%;
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   left: 0;
   right: 0;
   background-color: #543172;
-  &__wrapper-logo {
-    width: 70px;
-    height: 70px;
-    margin: 35px 0 0 35px;
+
+  &__wrapper-logo-bg {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 20px 0 0 20px;
     background-color: #6c4e86;
     border-radius: 10px;
   }
   &__logo {
-    width: 40px;
-    margin: 17px 16px 13px 14px;
+    width: 25px;
+    margin: 14px 13px 11px 12px;
+  }
+  &__logo-type {
+    height: 35px;
+    margin-left: 15px;
+  }
+  &__buttons-wrapper {
+    position: relative;
+    margin: 10px;
+    height: 100%;
+  }
+  &__button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    margin: 5px 0;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #6c4e86;
+    }
+    & svg {
+      margin: 0 10px;
+    }
+    &__campaign {
+      margin-top: 44px;
+      margin: 18px 0;
+      border-radius: 0;
+      background-color: var(--brand-secondary);
+    }
+    &__bottom {
+      position: absolute;
+      bottom: 0;
+    }
   }
 }
