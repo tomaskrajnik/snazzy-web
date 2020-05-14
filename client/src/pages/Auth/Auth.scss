@@ -1,0 +1,91 @@
+@import "./../../assets/styles/index.scss";
+
+.auth {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    &__background-image {
+        position: absolute;
+        z-index: -1;
+        transform: rotate(-8deg) skew(-8deg);
+        width: 100%;
+        top: -200px;
+        height: 650px;
+        background-color: var(--secondary-gray);
+    }
+}
+
+.form-wrapper {
+    background-color: var(--white);
+    max-width: 500px;
+    padding: 57px;
+    border-radius: 5px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+
+    & h2 {
+        color: var(--brand-primary);
+        font-weight: 400;
+    }
+
+    input {
+
+        &:focus {
+            border: 1px solid var(--brand-secondary) !important;
+            box-shadow: 0 0 5px var(--brand-secondary);
+        }
+    }
+
+    button {
+        color: var(--brand-secondary);
+
+        :focus {
+            outline: 0 !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        &:hover {
+            color: rgb(155, 25, 83);
+        }
+    }
+
+
+
+    button[type="submit"] {
+        color: var(--white);
+        background-color: var(--brand-secondary);
+        border-color: var(--brand-secondary);
+        margin-top: 100px;
+
+        &:hover {
+            background-color: rgb(155, 25, 83);
+            border-color: rgb(155, 25, 83);
+        }
+
+        &:active {
+            background-color: rgb(155, 25, 83) !important;
+            border-color: rgb(155, 25, 83) !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+    }
+}
+
+.linkToOtherAuth {
+    color: var(--brand-secondary);
+    font-weight: 700;
+
+    &:hover {
+        color: rgb(155, 25, 83);
+        text-decoration: none;
+    }
+}
+
+.backtoSnazzy {
+    & a {
+        color: var(--brand-primary) !important;
+    }
+}

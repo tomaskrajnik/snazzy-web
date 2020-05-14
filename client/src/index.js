@@ -4,8 +4,6 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 
-import "./assets/styles/index.scss";
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
