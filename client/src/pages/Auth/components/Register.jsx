@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Row, Col, Form } from "react-bootstrap";
 import { Redirect, Link } from "react-router-dom";
 import Input from "./../../../components/common/Input";
 import SubmitButton from "../../../components/common/SubmitButton";
+import Joi from "joi-browser";
 
 import AuthService from "./../../../services/authService";
-import Plans from "./../../../services/plansService";
 
 import backgroundUpperAsset from "./../../../assets/images/auth-background-asset1.svg";
 import backgroundLowerAsset from "./../../../assets/images/auth-background-asset2.svg";
@@ -35,6 +35,13 @@ const Register = ({ token, saveToken }) => {
     email: "",
     selectedPlan: "",
   });
+  const [errors, setErrors] = useState({});
+
+  const schema = {
+    name: Joi.string().required().label("Name"),
+    email: Joi.string().min(3).max(50).required().email().label("Email"),
+    password: Joi.string().min(8).max(255).required().label("Password"),
+  };
 
   const handleChange = ({ currentTarget: input }) => {
     const credentials = { ...user };
@@ -43,16 +50,29 @@ const Register = ({ token, saveToken }) => {
     setUser(credentials);
   };
 
+  const validate = () => {
+    const { error } = Joi.validate(user, schema, { abortEarly: false });
+    if (!error) return {};
+    const errors = {};
+    error.details.map((item) => (errors[item.path[0]] = item.message));
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const credentials = { ...user, selectedPlan: "Trial" };
+    const errorMessages = validate();
+    setErrors(errorMessages);
     try {
       const response = await AuthService.register(credentials);
       const token = response.headers["x-auth-token"];
       localStorage.setItem("snazzyAuthToken", token);
       saveToken(token);
-    } catch (err) {
-      console.log(err.message);
+    } catch ({ response: err }) {
+      if (err.data.includes("registered")) {
+        const errorMessages = { email: err.data };
+        setErrors(errorMessages);
+      }
     }
   };
 
@@ -82,21 +102,23 @@ const Register = ({ token, saveToken }) => {
                 type="text"
                 onChange={handleChange}
                 label="Name"
+                error={errors.name}
               />
               <Input
                 name="email"
                 type="email"
                 onChange={handleChange}
                 label="Email"
+                error={errors.email}
               />
               <Input
                 name="password"
                 type="password"
                 onChange={handleChange}
                 label="Password"
+                error={errors.password}
               />
-
-              <SubmitButton title="Sign in" />
+              <SubmitButton title="Sign up" />
             </Form>
           </div>
           <div className=" mt-4 mb-5">
@@ -113,7 +135,9 @@ const Register = ({ token, saveToken }) => {
         </Col>
 
         <Col className="text-wrapper text-left">
-          <h1 className="mb-5">7 day trial for free!</h1>
+          <h1 style={{ marginTop: "-20px" }} className="mb-5">
+            7 day trial for free!
+          </h1>
           {whatWeOfferArray.map((item) => (
             <li className="whatWeOffer" key={item}>
               {item}

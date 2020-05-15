@@ -35,7 +35,6 @@
   }
 
   input {
-    box-shadow: inset 0px 1px 12px rgba(0, 0, 0, 0.03);
     &:not([type="checkbox"]):focus {
       border: 1px solid var(--brand-secondary) !important;
       box-shadow: none;

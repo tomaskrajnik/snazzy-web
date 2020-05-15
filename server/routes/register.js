@@ -11,7 +11,8 @@ router.post("/", async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   let user = await User.findOne({ email: req.body.email });
-  if (user) return res.status(400).send("User already registered..");
+  if (user)
+    return res.status(400).send("User with this email is already registered.");
 
   const plan = await Plan.findOne({ title: req.body.selectedPlan });
   if (!plan) return res.status(400).send("Invalid plan");

@@ -25,6 +25,11 @@ const Input = ({
     border: "none",
     marginLeft: "auto",
   };
+  const errorStyle = {
+    fontSize: "14px",
+    marginTop: "5px",
+    color: "#ff6961",
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -51,7 +56,9 @@ const Input = ({
         placeholder={placeholder}
         onChange={onChange}
         style={inputStyle}
+        style={error ? { borderColor: "#ff6961" } : {}}
       />
+      {error && <div style={errorStyle}>{error}</div>}
     </Form.Group>
   );
 };

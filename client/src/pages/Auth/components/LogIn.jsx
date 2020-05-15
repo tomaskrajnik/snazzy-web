@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form } from "react-bootstrap";
 import { Redirect, Link } from "react-router-dom";
 import Input from "./../../../components/common/Input";
 import SubmitButton from "../../../components/common/SubmitButton";
+import Joi from "joi-browser";
 
 import AuthService from "./../../../services/authService";
 
@@ -10,10 +11,12 @@ import backgroundUpperAsset from "./../../../assets/images/auth-background-asset
 import backgroundLowerAsset from "./../../../assets/images/auth-background-asset2.svg";
 
 const LogIn = ({ token, saveToken }) => {
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+  const [user, setUser] = useState({});
+  const [errors, setErrors] = useState({});
+  const schema = {
+    email: Joi.string().required().email().label("Email"),
+    password: Joi.string().min(8).required().label("Password"),
+  };
 
   const handleChange = ({ currentTarget: input }) => {
     const credentials = { ...user };
@@ -22,14 +25,31 @@ const LogIn = ({ token, saveToken }) => {
     setUser(credentials);
   };
 
+  const validate = () => {
+    const { error } = Joi.validate(user, schema, { abortEarly: false });
+    if (!error) return {};
+    const errors = {};
+    error.details.map((item) => (errors[item.path[0]] = item.message));
+
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errorMessages = validate();
+    setErrors(errorMessages);
     try {
       const authToken = (await AuthService.login(user)).data;
       localStorage.setItem("snazzyAuthToken", authToken);
       saveToken(authToken);
-    } catch (err) {
-      console.log(err.message);
+    } catch ({ response: err }) {
+      if (err.data.includes("Invalid")) {
+        const errorMessages = {
+          email: err.data,
+          password: err.data,
+        };
+        setErrors(errorMessages);
+      }
     }
   };
 
@@ -57,6 +77,7 @@ const LogIn = ({ token, saveToken }) => {
             type="email"
             onChange={handleChange}
             label="Email"
+            error={errors.email}
           />
           <Input
             name="password"
@@ -64,6 +85,7 @@ const LogIn = ({ token, saveToken }) => {
             onChange={handleChange}
             label="Password"
             additionalButton="Forgot password?"
+            error={errors.password}
           />
           <SubmitButton title="Sign in" />
         </Form>
