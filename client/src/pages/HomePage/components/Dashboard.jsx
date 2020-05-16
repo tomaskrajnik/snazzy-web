@@ -15,7 +15,7 @@ const Dashboard = () => {
   });
 
   return (
-    <div class="dashboard">
+    <div className="dashboard">
       <div className="dashboard__header">
         <h1>My campaigns</h1>
         <div className="dashboard__header__view dashboard__header__view-active">

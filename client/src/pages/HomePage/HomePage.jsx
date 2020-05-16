@@ -10,18 +10,19 @@ const HomePage = ({token, removeToken}) => {
     return <Redirect to="/auth" />;
   }
   const handleLogOut = () => {
+    console.log("Logging out");
     removeToken(null);
     localStorage.clear();
   };
   return (
     <div className="homepage">
       <Sidebar />
-      <Topbar />
+      <Topbar onLogOut={handleLogOut} />
       <div className="homepage__content">
         <Dashboard></Dashboard>
       </div>
 
-      <button onClick={handleLogOut}>Log out</button>
+      <button>Log out</button>
     </div>
   );
 };

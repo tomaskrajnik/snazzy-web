@@ -35,7 +35,7 @@ const Sidebar = () => {
       </button>
       <div className="sidebar__buttons-wrapper">
         {buttons.map((b) => (
-          <button className="sidebar__button">
+          <button className="sidebar__button" key={b.name}>
             {" "}
             <i data-eva={b.icon} data-eva-fill="#fff">
               {" "}

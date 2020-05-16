@@ -5,7 +5,7 @@ import notificationSVG from "../../../assets/images/notification.svg";
 import profilePicture from "../../../assets/images/profile-picture.svg";
 import {Dropdown} from "react-bootstrap";
 
-const Topbar = () => {
+const Topbar = ({onLogOut}) => {
   useEffect(() => {
     eva.replace({
       width: "10px",
@@ -43,7 +43,9 @@ const Topbar = () => {
         <Dropdown.Menu>
           <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
           <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Log out</Dropdown.Item>
+          <Dropdown.Item href="#/action-3" onClick={onLogOut}>
+            Log out
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </div>

@@ -75,7 +75,7 @@ const Register = ({token, saveToken}) => {
       }
     }
   };
-  console.log(isLoading);
+
   if (token) return <Redirect to="/" />;
 
   return (

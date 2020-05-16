@@ -3,7 +3,7 @@ import "../campaign.scss";
 
 const Campaign = (props) => {
   return (
-    <div class="campaign">
+    <div className="campaign">
       <img src={props.imgPath} className="campaign__image"></img>
       <div className="campaign__content">
         <div className="campaign__icons">
