@@ -1,5 +1,5 @@
 import React from "react";
-import "../campaign.scss";
+import "./Campaign.scss";
 
 const Campaign = (props) => {
   return (

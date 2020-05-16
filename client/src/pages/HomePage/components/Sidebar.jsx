@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
-import "../sidebar.scss";
-import {Button} from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import "./Sidebar.scss";
+import { Button } from "react-bootstrap";
 import * as eva from "eva-icons";
 import logoIcon from "../../../assets/images/snazzy-logo.svg";
 import logoType from "../../../assets/images/snazzy-type.svg";
@@ -13,12 +13,12 @@ const Sidebar = () => {
     });
   });
   const buttons = [
-    {name: "Dashboard", icon: "home-outline", href: ""},
-    {name: "People", icon: "people-outline", href: ""},
-    {name: "Pricing", icon: "layers-outline", href: ""},
-    {name: "Settings", icon: "settings-outline", href: ""},
-    {name: "Discover", icon: "bulb-outline", href: ""},
-    {name: "FAQ", icon: "question-mark-circle-outline", href: ""},
+    { name: "Dashboard", icon: "home-outline", href: "" },
+    { name: "People", icon: "people-outline", href: "" },
+    { name: "Pricing", icon: "layers-outline", href: "" },
+    { name: "Settings", icon: "settings-outline", href: "" },
+    { name: "Discover", icon: "bulb-outline", href: "" },
+    { name: "FAQ", icon: "question-mark-circle-outline", href: "" },
   ];
   return (
     <div className="sidebar">
