@@ -1,11 +1,11 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import * as eva from "eva-icons";
-import "../topbar.scss";
+import "./Topbar.scss";
 import notificationSVG from "../../../assets/images/notification.svg";
 import profilePicture from "../../../assets/images/profile-picture.svg";
-import {Dropdown} from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 
-const Topbar = ({onLogOut}) => {
+const Topbar = ({ onLogOut, user }) => {
   useEffect(() => {
     eva.replace({
       width: "10px",
@@ -36,7 +36,7 @@ const Topbar = ({onLogOut}) => {
       <Dropdown className="topbar__profile-btn">
         <Dropdown.Toggle id="dropdown-basic">
           <img src={profilePicture} alt="" />
-          John Doe
+          {user.name}
           <i data-eva="chevron-down-outline" data-eva-fill="#A7B4CC"></i>
         </Dropdown.Toggle>
 
