@@ -1,5 +1,6 @@
 import React from "react";
 import { Form } from "react-bootstrap";
+import { PropTypes } from "prop-types";
 
 const Input = ({
   name,
@@ -41,6 +42,7 @@ const Input = ({
           {label}
           {additionalButton && (
             <button
+              type="button"
               onClick={handleClick}
               className="ml-auto"
               style={additionalBtnStyle}
@@ -61,6 +63,16 @@ const Input = ({
       {error && <div style={errorStyle}>{error}</div>}
     </Form.Group>
   );
+};
+
+Input.propTypes = {
+  name: PropTypes.string,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  additionalButton: PropTypes.string,
+  label: PropTypes.string,
+  error: PropTypes.string,
 };
 
 export default Input;

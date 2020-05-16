@@ -149,7 +149,12 @@ const Register = ({ token, saveToken }) => {
             integrations, Zapier or through our API.
           </p>
           {integrationLogos.map(({ id, src }) => (
-            <img className="mr-4 mt-4" key={id} src={src}></img>
+            <img
+              className="mr-4 mt-4"
+              key={id}
+              alt="integration"
+              src={src}
+            ></img>
           ))}
         </Col>
       </Row>

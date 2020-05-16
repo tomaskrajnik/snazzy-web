@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Register from "./components/Register";
 import LogIn from "./components/LogIn";
 import { Col } from "react-bootstrap";
+import { PropTypes } from "prop-types";
 
 import "./Auth.scss";
 import logo from "./../../assets/images/snazzy_logo_onboarding.svg";
@@ -27,6 +28,11 @@ const Auth = ({ token, saveToken }) => {
       </Col>
     </div>
   );
+};
+
+Auth.propTypes = {
+  token: PropTypes.string,
+  saveToken: PropTypes.func,
 };
 
 export default Auth;

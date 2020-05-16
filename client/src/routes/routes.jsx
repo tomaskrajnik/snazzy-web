@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Auth from "./../pages/Auth/Auth";
 import HomePage from "./../pages/HomePage/HomePage";

@@ -43,7 +43,7 @@ const LogIn = ({ token, saveToken }) => {
       localStorage.setItem("snazzyAuthToken", authToken);
       saveToken(authToken);
     } catch ({ response: err }) {
-      if (err.data.includes("Invalid")) {
+      if (err.data.includes("Wrong")) {
         const errorMessages = {
           email: err.data,
           password: err.data,
