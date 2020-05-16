@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Auth from "./../pages/Auth/Auth";
 import HomePage from "./../pages/HomePage/HomePage";
 import NotFound from "./../pages/NotFound/NotFound";
+import { PropTypes } from "prop-types";
 
 const Routes = ({ token, saveToken }) => {
   return (
@@ -26,6 +27,11 @@ const Routes = ({ token, saveToken }) => {
       <Redirect to="/not-found" />
     </Switch>
   );
+};
+
+Routes.propTypes = {
+  token: PropTypes.string,
+  saveToken: PropTypes.func,
 };
 
 export default Routes;
