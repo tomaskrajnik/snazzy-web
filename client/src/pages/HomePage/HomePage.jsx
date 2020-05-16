@@ -26,7 +26,7 @@ const HomePage = ({ token, removeToken }) => {
       const userId = jwt.decode(token)._id;
       getUser(userId);
     }
-  });
+  }, []);
 
   const handleLogOut = () => {
     removeToken(null);

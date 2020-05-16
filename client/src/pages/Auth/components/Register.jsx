@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import {Row, Col, Form} from "react-bootstrap";
-import {Redirect, Link} from "react-router-dom";
+import React, { useState } from "react";
+import { Row, Col, Form } from "react-bootstrap";
+import { Redirect, Link } from "react-router-dom";
 import Input from "./../../../components/common/Input";
 import SubmitButton from "../../../components/common/SubmitButton";
 import Joi from "joi-browser";
@@ -16,10 +16,10 @@ import shopifyLogo from "./../../../assets/images/integrations/shopify.svg";
 import googleLogo from "./../../../assets/images/integrations/google.svg";
 
 const integrationLogos = [
-  {id: 1, src: mailchimpLogo},
-  {id: 2, src: wordpressLogo},
-  {id: 3, src: shopifyLogo},
-  {id: 4, src: googleLogo},
+  { id: 1, src: mailchimpLogo },
+  { id: 2, src: wordpressLogo },
+  { id: 3, src: shopifyLogo },
+  { id: 4, src: googleLogo },
 ];
 
 const whatWeOfferArray = [
@@ -28,7 +28,7 @@ const whatWeOfferArray = [
   "Watch the behaviour",
 ];
 
-const Register = ({token, saveToken}) => {
+const Register = ({ token, saveToken }) => {
   const [user, setUser] = useState({
     name: "",
     password: "",
@@ -43,15 +43,15 @@ const Register = ({token, saveToken}) => {
     password: Joi.string().min(8).max(255).required().label("Password"),
   };
 
-  const handleChange = ({currentTarget: input}) => {
-    const credentials = {...user};
-    const {name, value} = input;
+  const handleChange = ({ currentTarget: input }) => {
+    const credentials = { ...user };
+    const { name, value } = input;
     credentials[name] = value;
     setUser(credentials);
   };
 
   const validate = () => {
-    const {error} = Joi.validate(user, schema, {abortEarly: false});
+    const { error } = Joi.validate(user, schema, { abortEarly: false });
     if (!error) return {};
     const errors = {};
     error.details.map((item) => (errors[item.path[0]] = item.message));
@@ -60,7 +60,7 @@ const Register = ({token, saveToken}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const credentials = {...user, selectedPlan: "Trial"};
+    const credentials = { ...user, selectedPlan: "Trial" };
     const errorMessages = validate();
     setErrors(errorMessages);
     try {
@@ -68,9 +68,9 @@ const Register = ({token, saveToken}) => {
       const token = response.headers["x-auth-token"];
       localStorage.setItem("snazzyAuthToken", token);
       saveToken(token);
-    } catch ({response: err}) {
+    } catch ({ response: err }) {
       if (err.data.includes("registered")) {
-        const errorMessages = {email: err.data};
+        const errorMessages = { email: err.data };
         setErrors(errorMessages);
       }
     }
@@ -79,19 +79,19 @@ const Register = ({token, saveToken}) => {
   if (token) return <Redirect to="/" />;
 
   return (
-    <div className="d-flex flex-column text-center ">
-      <Row className="ml-auto mr-auto mt-5">
-        <Col>
+    <div className="d-flex flex-column text-center w-100">
+      <Row className="ml-auto mr-auto register-form mt-5">
+        <Col className="register-form">
           <div className=" mr-0 text-left position-relative form-wrapper">
             <img
               className="position-absolute"
-              style={{left: "-20px", zIndex: "-1"}}
+              style={{ left: "-20px", zIndex: "-1" }}
               src={backgroundUpperAsset}
               alt="snazzy"
             />
             <img
               className="position-absolute"
-              style={{bottom: "20px", right: "-20px", zIndex: "-1"}}
+              style={{ bottom: "20px", right: "-20px", zIndex: "-1" }}
               src={backgroundLowerAsset}
               alt="snazzy"
             />
@@ -135,7 +135,7 @@ const Register = ({token, saveToken}) => {
         </Col>
 
         <Col className="text-wrapper text-left">
-          <h1 style={{marginTop: "-20px"}} className="mb-5">
+          <h1 style={{ marginTop: "-20px" }} className="mb-5">
             7 day trial for free!
           </h1>
           {whatWeOfferArray.map((item) => (
@@ -148,7 +148,7 @@ const Register = ({token, saveToken}) => {
             Integrating with your email service provider is easy with our native
             integrations, Zapier or through our API.
           </p>
-          {integrationLogos.map(({id, src}) => (
+          {integrationLogos.map(({ id, src }) => (
             <img
               className="mr-4 mt-4"
               key={id}

@@ -2,7 +2,7 @@ import React from "react";
 import { Col } from "react-bootstrap";
 
 import "./../Auth/Auth.scss";
-import logo from "./../../assets/images/snazzy_logo_onboarding.svg";
+import logo from "./../../assets/images/snazzy_logo_auth.svg";
 
 const NotFound = () => {
   return (
@@ -16,7 +16,7 @@ const NotFound = () => {
           <h1>
             404. <span>That's an error.</span>
           </h1>
-          <p>The requested URL does not exist</p>
+          <p>The requested URL does not exist or has been moved.</p>
         </div>
       </Col>
       <Col className="backtoSnazzy text-center flex-grow-0 mt-auto mb-4">

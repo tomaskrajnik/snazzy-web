@@ -6,7 +6,7 @@ import { Col } from "react-bootstrap";
 import { PropTypes } from "prop-types";
 
 import "./Auth.scss";
-import logo from "./../../assets/images/snazzy_logo_onboarding.svg";
+import logo from "./../../assets/images/snazzy_logo_auth.svg";
 
 const Auth = ({ token, saveToken }) => {
   return (

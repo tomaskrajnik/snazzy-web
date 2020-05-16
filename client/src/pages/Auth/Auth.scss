@@ -1,5 +1,12 @@
 @import "./../../assets/styles/index.scss";
 
+button:focus,
+button:active {
+  outline: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
 .auth {
   width: 100%;
   min-height: 100vh;
@@ -146,5 +153,51 @@
 
   & span {
     color: var(--brand-secondary);
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .text-wrapper {
+    display: none;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .auth {
+    padding: 5%;
+
+    &__background-image {
+      display: none;
+    }
+  }
+
+  .form-wrapper {
+    background-color: var(--white);
+    width: 100%;
+    padding: 47px 57px;
+    border-radius: 3px;
+    box-shadow: none;
+    padding: 0;
+
+    & img {
+      display: none;
+    }
+
+  }
+
+  .register-form {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+  }
+
+  .margin-fix {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .not-found-block {
+    padding: 10px;
+    box-shadow: none;
   }
 }
