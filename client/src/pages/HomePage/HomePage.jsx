@@ -1,18 +1,28 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import {Redirect} from "react-router-dom";
+import "./homepage.scss";
+import Sidebar from "./components/Sidebar";
+import Topbar from "./components/Topbar";
+import Dashboard from "./components/Dashboard";
 
-const HomePage = ({ token, removeToken }) => {
+const HomePage = ({token, removeToken}) => {
   if (!token) {
     return <Redirect to="/auth" />;
   }
   const handleLogOut = () => {
+    console.log("Logging out");
     removeToken(null);
     localStorage.clear();
   };
   return (
-    <div>
-      <h1>Dashboard {token}</h1>
-      <button onClick={handleLogOut}>Log out</button>
+    <div className="homepage">
+      <Sidebar />
+      <Topbar onLogOut={handleLogOut} />
+      <div className="homepage__content">
+        <Dashboard></Dashboard>
+      </div>
+
+      <button>Log out</button>
     </div>
   );
 };

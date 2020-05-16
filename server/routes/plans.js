@@ -1,5 +1,5 @@
 const _ = require("lodash");
-const { Plan, validate } = require("./../models/plan");
+const {Plan, validate} = require("./../models/plan");
 const express = require("express");
 const router = express.Router();
 const auth = require("./../middleware/auth");
@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", [auth, admin], async (req, res) => {
-  const { error } = validate(req.body);
+  const {error} = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const plan = new Plan(_.pick(req.body, ["title", "price", "description"]));
