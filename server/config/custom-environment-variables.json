@@ -1,4 +1,4 @@
 {
   "TOKEN_PRIVATE_KEY": "SNAZZY_TOKEN_PRIVATE_KEY",
-  "db": "snazzy_db"
+  "DB": "snazzy_db"
 }
