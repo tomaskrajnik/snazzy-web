@@ -30,7 +30,6 @@ const LogIn = ({ token, saveToken }) => {
     if (!error) return {};
     const errors = {};
     error.details.map((item) => (errors[item.path[0]] = item.message));
-
     return errors;
   };
 
