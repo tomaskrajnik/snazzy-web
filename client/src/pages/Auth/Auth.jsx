@@ -1,18 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Register from "./components/Register";
 import LogIn from "./components/LogIn";
 import { Col } from "react-bootstrap";
+import { PropTypes } from "prop-types";
 
 import "./Auth.scss";
 import logo from "./../../assets/images/snazzy_logo_onboarding.svg";
 
 const Auth = ({ token, saveToken }) => {
   return (
-    <div className="auth d-flex flex-column">
+    <div className="auth d-flex flex-column pb-5">
       <div className="auth__background-image"></div>
-      <Col className="text-center mt-5 flex-grow-0">
-        <img src={logo} style={{ width: "110px" }} alt="logo"></img>
+      <Col className="text-center flex-grow-0 auth-snazzy-logo">
+        <img src={logo} style={{ width: "130px" }} alt="logo"></img>
       </Col>
       <Switch>
         <Route path="/auth/register">
@@ -27,6 +28,11 @@ const Auth = ({ token, saveToken }) => {
       </Col>
     </div>
   );
+};
+
+Auth.propTypes = {
+  token: PropTypes.string,
+  saveToken: PropTypes.func,
 };
 
 export default Auth;

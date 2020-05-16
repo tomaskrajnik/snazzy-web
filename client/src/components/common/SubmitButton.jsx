@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { PropTypes } from "prop-types";
 
 const SubmitButton = ({ title }) => {
   const buttonStyle = {
@@ -13,6 +14,10 @@ const SubmitButton = ({ title }) => {
       {title}
     </Button>
   );
+};
+
+SubmitButton.propTypes = {
+  title: PropTypes.string,
 };
 
 export default SubmitButton;
