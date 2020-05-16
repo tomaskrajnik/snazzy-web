@@ -1,34 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;700&display=swap");
 @import "colors";
 
 :root {
-    --font-family-headers: 'Inter',
-        sans-serif;
-    --font-family-primary: 'Roboto',
-        sans-serif;
+  --font-family-headers: "Inter", sans-serif;
+  --font-family-primary: "Roboto", sans-serif;
 
-    --font-size-primary: 16px;
-    --line-height-primary: 18px;
+  --font-size-primary: 16px;
+  --line-height-primary: 18px;
 
-    --font-size-small: 16px;
-    --line-height-small: 24px;
+  --font-size-small: 16px;
+  --line-height-small: 24px;
 
-    --font-size-h1: 46px;
-    --line-height-h1: 63px;
+  --font-size-h1: 33px;
+  --line-height-h1: 46px;
 
-    --font-size-h2: 24px;
-    --line-height-h2: 32px;
+  --font-size-h2: 24px;
+  --line-height-h2: 32px;
 
-    --font-size-h3: 20px;
-    --line-height-h3: 28px;
+  --font-size-h3: 20px;
+  --line-height-h3: 28px;
 }
 
-
-
 body {
-    font-family: var(--font-family-primary);
-    font-weight: 400;
-    color: var(--font-color-primary);
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  color: var(--font-color-primary);
 }
 
 h1,
@@ -37,32 +33,32 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-family-headers);
+  font-family: var(--font-family-headers);
 }
 
 h1 {
-    font-size: (var(--font-size-h1));
-    line-height: var(--line-height-h1);
-    font-weight: 700;
+  font-size: (var(--font-size-h1));
+  line-height: var(--line-height-h1);
+  font-weight: 700;
 }
 
 h2 {
-    font-size: (var(--font-size-h2));
-    line-height: var(--line-height-h2);
-    font-weight: 500;
+  font-size: (var(--font-size-h2));
+  line-height: var(--line-height-h2);
+  font-weight: 500;
 }
 
 h3 {
-    font-size: (var(--font-size-h3));
-    line-height: var(--line-height-h3);
-    font-weight: 500;
+  font-size: (var(--font-size-h3));
+  line-height: var(--line-height-h3);
+  font-weight: 500;
 }
 
 p {
-    font-size: (var(--font-size-primary));
-    line-height: var(--line-height-primary);
+  font-size: (var(--font-size-primary));
+  line-height: var(--line-height-primary);
 }
 
 input[type="password"] {
-    letter-spacing: 3px;
+  letter-spacing: 3px;
 }

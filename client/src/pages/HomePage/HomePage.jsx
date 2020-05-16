@@ -16,8 +16,8 @@ const HomePage = ({token, removeToken}) => {
   return (
     <div className="homepage">
       <Sidebar />
+      <Topbar />
       <div className="homepage__content">
-        <Topbar />
         <Dashboard></Dashboard>
       </div>
 

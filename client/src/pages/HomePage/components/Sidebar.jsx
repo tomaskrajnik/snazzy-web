@@ -8,7 +8,6 @@ import logoType from "../../../assets/images/snazzy-type.svg";
 const Sidebar = () => {
   useEffect(() => {
     eva.replace({
-      fill: "#fff",
       width: "20px",
       height: "20px",
     });
@@ -31,20 +30,23 @@ const Sidebar = () => {
       </div>
       <button className="sidebar__button sidebar__button__campaign">
         {" "}
-        <i data-eva="plus-circle-outline"></i>Create new campaign
+        <i data-eva="plus-circle-outline" data-eva-fill="#fff"></i>Create new
+        campaign
       </button>
       <div className="sidebar__buttons-wrapper">
         {buttons.map((b) => (
           <button className="sidebar__button">
             {" "}
-            <i data-eva={b.icon}> </i>
+            <i data-eva={b.icon} data-eva-fill="#fff">
+              {" "}
+            </i>
             {b.name}
           </button>
         ))}
 
         <button className="sidebar__button sidebar__button__bottom">
           {" "}
-          <i data-eva="star-outline"></i>Rate us
+          <i data-eva="star-outline" data-eva-fill="#fff"></i>Rate us
         </button>
       </div>
     </div>
