@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import { Redirect, Link } from "react-router-dom";
+import Joi from "joi-browser";
+
 import Input from "./../../../components/common/Input";
 import SubmitButton from "../../../components/common/SubmitButton";
-import Joi from "joi-browser";
 
 import AuthService from "./../../../services/authService";
 
@@ -55,7 +56,7 @@ const LogIn = ({ token, saveToken }) => {
   if (token) return <Redirect to="/" />;
 
   return (
-    <Row className="d-flex flex-column text-center ">
+    <Row className="d-flex flex-column text-center margin-fix">
       <Col className="mr-auto ml-auto mt-5 text-left position-relative form-wrapper">
         <img
           className="position-absolute"
