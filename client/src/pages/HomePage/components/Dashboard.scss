@@ -1,6 +1,6 @@
 .dashboard {
   &__header {
-    margin-top: 130px;
+    margin-top: 40px;
     display: flex;
     align-items: center;
 
@@ -12,11 +12,13 @@
     &__view {
       width: 40px;
       height: 40px;
+      margin-right: 5px;
       border-radius: 2px;
 
       & svg {
         display: block;
         margin: 10px auto;
+        cursor: pointer;
       }
 
       &:hover {
@@ -26,8 +28,13 @@
           fill: var(--brand-secondary);
         }
       }
+      &-active {
+        background-color: #f1dce5;
 
-      &-active {}
+        & svg {
+          fill: var(--brand-secondary);
+        }
+      }
     }
 
     &__btn {
@@ -36,10 +43,15 @@
       font-size: 14px;
       font-weight: 600;
       color: white;
-      border: none;
+
       padding: 10px 18px 10px 13px;
       border-radius: 5px;
+      border: 1px solid var(--brand-secondary);
       background-color: var(--brand-secondary);
+      &:hover {
+        background-color: #9b1953;
+        transition: 0.2s ease;
+      }
 
       & svg {
         margin-right: 10px;

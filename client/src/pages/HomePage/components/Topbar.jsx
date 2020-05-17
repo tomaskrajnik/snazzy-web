@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import * as eva from "eva-icons";
 import "./Topbar.scss";
 import notificationSVG from "../../../assets/images/notification.svg";
 import profilePicture from "../../../assets/images/profile-picture.svg";
-import { Dropdown } from "react-bootstrap";
+import accountIcon from "../../../assets/images/account.svg";
+import logOutIcon from "../../../assets/images/log-out.svg";
+import {Dropdown} from "react-bootstrap";
 
-const Topbar = ({ onLogOut, user }) => {
+const Topbar = ({onLogOut, user}) => {
   useEffect(() => {
     eva.replace({
       width: "10px",
@@ -24,11 +26,14 @@ const Topbar = ({ onLogOut, user }) => {
           <i data-eva="chevron-down-outline" data-eva-fill="#A7B4CC"></i>
         </div>
       </div>
-      <input
-        type="text"
-        className="topbar__search"
-        placeholder="Search.."
-      ></input>
+      <fieldset className="topbar__search-fieldset">
+        <input
+          type="text"
+          className="topbar__search"
+          placeholder="Search.."
+        ></input>
+        <span class="topbar__search-icon"></span>
+      </fieldset>
       <div className="topbar__notification">
         <img src={notificationSVG} alt="" />
       </div>
@@ -40,10 +45,13 @@ const Topbar = ({ onLogOut, user }) => {
           <i data-eva="chevron-down-outline" data-eva-fill="#A7B4CC"></i>
         </Dropdown.Toggle>
 
-        <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+        <Dropdown.Menu className="topbar__profile-dropdown">
+          <Dropdown.Item href="#/action-1">
+            <img src={accountIcon} alt="" /> Account Settings
+          </Dropdown.Item>
+          <Dropdown.Divider />
           <Dropdown.Item href="#/action-3" onClick={onLogOut}>
+            <img src={logOutIcon} alt="" />
             Log out
           </Dropdown.Item>
         </Dropdown.Menu>
