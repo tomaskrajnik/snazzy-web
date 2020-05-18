@@ -348,3 +348,5 @@
 {"message":"Connected to database - mongodb://localhost/snazzy...","level":"info"}
 {"message":"Starting application on port 5000","level":"info"}
 {"message":"Connected to database - mongodb://localhost/snazzy...","level":"info"}
+{"message":"Starting application on port 5000","level":"info"}
+{"message":"Connected to database - mongodb://localhost/snazzy...","level":"info"}
