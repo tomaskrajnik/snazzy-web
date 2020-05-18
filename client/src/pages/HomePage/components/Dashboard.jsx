@@ -20,7 +20,7 @@ const Dashboard = () => {
     <div className="dashboard">
       <AlertDismissible
         title="Note"
-        text={`This is just a static prototype of the Dashbiard. You preview more in the clickable clickable prototype click\u00A0`}
+        text={`This is just a static prototype of the Dashboard. You preview more in the clickable clickable prototype click\u00A0`}
         linkName=" here"
         linkTo="https://xd.adobe.com/view/b32d6a62-8011-45cf-5dd3-d7aa9d4db470-c51c/"
       />
