@@ -1,18 +1,24 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import * as eva from "eva-icons";
 import "./Topbar.scss";
 import notificationSVG from "../../../assets/images/notification.svg";
-import profilePicture from "../../../assets/images/profile-picture.svg";
 import accountIcon from "../../../assets/images/account.svg";
 import logOutIcon from "../../../assets/images/log-out.svg";
-import {Dropdown} from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 
-const Topbar = ({onLogOut, user}) => {
+const Topbar = ({ onLogOut, user }) => {
   useEffect(() => {
     eva.replace({
       width: "10px",
     });
   });
+
+  const initials = user.name
+    .trim()
+    .split(/\s(\w+)$/)
+    .map((ch) => ch[0])
+    .join("")
+    .toUpperCase();
 
   return (
     <div className="topbar">
@@ -40,7 +46,9 @@ const Topbar = ({onLogOut, user}) => {
 
       <Dropdown className="topbar__profile-btn">
         <Dropdown.Toggle id="dropdown-basic">
-          <img src={profilePicture} alt="" />
+          <div style={{ width: "30px", height: "30px" }} className="avatar">
+            {initials}
+          </div>
           {user.name}
           <i data-eva="chevron-down-outline" data-eva-fill="#A7B4CC"></i>
         </Dropdown.Toggle>

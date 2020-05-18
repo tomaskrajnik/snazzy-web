@@ -40,6 +40,7 @@ userSchema.methods.generateAuthToken = function () {
     {
       _id: this._id,
       exp: new Date().setDate(new Date().getDate() + 1),
+      isAdmin: this.isAdmin,
     },
     config.get("TOKEN_PRIVATE_KEY")
   );
