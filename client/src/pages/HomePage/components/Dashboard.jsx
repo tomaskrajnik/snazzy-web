@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import * as eva from "eva-icons";
 import "./Dashboard.scss";
 import Campaign from "./Campaign.jsx";
+import AlertDismissible from "../../../components/common/AlertDismissible/AlertDismissible";
 
 import dashboardPreview1 from "../../../assets/images/dashboard-preview-1.png";
 import dashboardPreview2 from "../../../assets/images/dashboard-preview-2.png";
 import dashboardPreview3 from "../../../assets/images/dashboard-preview-3.png";
+
 const Dashboard = () => {
   useEffect(() => {
     eva.replace({
@@ -16,6 +18,12 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      <AlertDismissible
+        title="Note"
+        text={`This is just a static prototype of the Dashbiard. You preview more in the clickable clickable prototype click\u00A0`}
+        linkName=" here"
+        linkTo="https://xd.adobe.com/view/b32d6a62-8011-45cf-5dd3-d7aa9d4db470-c51c/"
+      />
       <div className="dashboard__header">
         <h1>My campaigns</h1>
         <div className="dashboard__header__view dashboard__header__view-active">

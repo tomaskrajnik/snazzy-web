@@ -16,7 +16,7 @@ const NotFound = () => {
     <div className="auth d-flex flex-column pb-5">
       <div className="auth__background-image"></div>
       <Col className="text-center flex-grow-0 auth-snazzy-logo">
-        <a href="">
+        <a href="#">
           <img
             onMouseEnter={changeToLogoColor}
             onMouseLeave={changeToLogoSecondaryColor}

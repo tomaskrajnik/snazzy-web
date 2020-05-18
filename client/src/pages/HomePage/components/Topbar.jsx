@@ -38,7 +38,7 @@ const Topbar = ({ onLogOut, user }) => {
           className="topbar__search"
           placeholder="Search.."
         ></input>
-        <span class="topbar__search-icon"></span>
+        <span className="topbar__search-icon"></span>
       </fieldset>
       <div className="topbar__notification">
         <img src={notificationSVG} alt="" />
