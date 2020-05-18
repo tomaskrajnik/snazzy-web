@@ -19,9 +19,9 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <AlertDismissible
-        title="Note"
+        title="Note: "
         text={`This is just a static prototype of the Dashboard. You can preview more in the clickable prototype\u00A0`}
-        linkName=" here"
+        linkName=" here."
         linkTo="https://xd.adobe.com/view/b32d6a62-8011-45cf-5dd3-d7aa9d4db470-c51c/"
       />
       <div className="dashboard__header">

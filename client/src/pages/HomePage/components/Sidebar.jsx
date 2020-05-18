@@ -40,7 +40,7 @@ const Sidebar = () => {
             key={b.name}
           >
             <i data-eva={b.icon} data-eva-fill="#fff"></i>
-            {b.name}
+            <span>{b.name}</span>
           </button>
         ))}
 

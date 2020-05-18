@@ -55,11 +55,11 @@ const Topbar = ({ onLogOut, user }) => {
 
         <Dropdown.Menu className="topbar__profile-dropdown">
           <Dropdown.Item href="#/action-1">
-            <img src={accountIcon} alt="" /> Account Settings
+            <img className="mr-2" src={accountIcon} alt="" /> Account Settings
           </Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item href="#/action-3" onClick={onLogOut}>
-            <img src={logOutIcon} alt="" />
+            <img className="mr-2" src={logOutIcon} alt="" />
             Log out
           </Dropdown.Item>
         </Dropdown.Menu>

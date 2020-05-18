@@ -15,7 +15,7 @@ const AlertDismissible = ({ title, text, linkName, linkTo }) => {
         dismissible
       >
         <p>
-          <span>{title}:</span>
+          <span>{title}</span>
           {text}
         </p>
         <a href={linkTo} target="_ blank">
