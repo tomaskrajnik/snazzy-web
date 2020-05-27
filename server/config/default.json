@@ -1,4 +1,0 @@
-{
-  "TOKEN_PRIVATE_KEY": "TOKEN_PRIVATE_KEY",
-  "DB": "mongodb://localhost/snazzy"
-}
